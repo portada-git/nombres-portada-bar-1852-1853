@@ -58,7 +58,9 @@ cand <- readRDS(ruta("data", "procesado", "candidatos_jw.rds")) |>
   transmute(NOMBRE_ORIG = nombre_original, NOMBRE_DICC = nombre_corregido, JARO_WINKLER = similitud_jaro_winkler, CHR_DIF = chr_dif) |>
   arrange(NOMBRE_ORIG)
 guardar_tabla(cand, "tabla04_candidatos_jw_completa")
-guardar_tabla(filter(cand, NOMBRE_ORIG >= "BEIR", NOMBRE_ORIG <= "BERG"), "tabla04_candidatos_jw_extracto")
+extracto_t4 <- c("BEIR", "BELAGUER", "BELENGUER", "BELLIDO", "BELTRAN", "BENANCIO", "BENASA", "BENASAR", "BENASCO",
+                 "BENDRICH", "BENESAR", "BENNASAR", "BENNESAR", "BERENGUER", "BERG")
+guardar_tabla(filter(cand, NOMBRE_ORIG %in% extracto_t4), "tabla04_candidatos_jw_extracto")
 
 # ---- Tabla 5: variantes de Bennasar ------------------------------------------
 t5 <- reg |>
@@ -68,6 +70,7 @@ guardar_tabla(t5, "tabla05_variantes_bennasar")
 
 # ---- Apellidos distintos antes y después de la normalización (sección 6) ------
 cifra("6", "Apellidos distintos sin tratamiento", n_distinct(reg$apellido_fuente, na.rm = TRUE))
+cifra("6", "Entradas por apellido sin tratamiento", formatC(N / n_distinct(reg$apellido_fuente, na.rm = TRUE), format = "f", digits = 2, decimal.mark = ","))
 cifra("6", "Apellidos distintos tras la normalización manual", n_distinct(reg$apellido_manual))
 cifra("6", "Registros por apellido tras la normalización", formatC(N / n_distinct(reg$apellido_manual), format = "f", digits = 2, decimal.mark = ","))
 
@@ -112,6 +115,9 @@ guardar_tabla(t10, "tabla10_sorolla_formas_por_buque")
 # ---- Casos del texto: Medinas y Sorolla --------------------------------------
 med <- reg |> filter(apellido_manual == "Medinas")
 guardar_tabla(count(med, id_manual, nombre_manual, buque, tipo_buque), "anexo_caso_medinas")
+med1 <- med |> filter(id_manual == "MEDINAS0001") |> arrange(fecha_llegada)
+cifra("7", "Medinas (Gabriel): llegadas a Barcelona", nrow(med1))
+cifra("7", "Medinas (Gabriel): días entre llegadas (mediana)", median(as.integer(diff(med1$fecha_llegada))))
 sor <- reg |> filter(apellido_manual == "Sorolla")
 guardar_tabla(sor |> group_by(id_manual, buque, tipo_buque) |>
   summarise(entradas = n(), tonelajes = paste(sort(unique(tonelaje)), collapse = "/"),

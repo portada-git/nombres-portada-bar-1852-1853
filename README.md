@@ -65,6 +65,12 @@ En `outputs/tablas/`, los archivos `tablaNN_*` corresponden a las tablas del art
 | `ine_padron2015_*.csv` | Instituto Nacional de Estadística, apellidos y nombres más frecuentes (padrón a 1/1/2015), vía [jvalhondo/spanish-names-surnames](https://github.com/jvalhondo/spanish-names-surnames). |
 | `ine_marcboquet_*.csv` | Instituto Nacional de Estadística, edición anterior de los mismos listados, vía [marcboquet/spanish-names](https://github.com/marcboquet/spanish-names). |
 
+## Cifras del artículo que no proceden de esta base
+
+- Los totales de buques entrados (6.687 en 1852 y 7.463 en 1853) y los buques relacionados uno por uno en las noticias (3.825 y 3.959) son recuentos hechos sobre el *Diario de Barcelona*; los porcentajes de extracción (91,3% y 86,1%) resultan de dividir por ellos las entradas de la base (3.492 y 3.410).
+- Los datos de Bassegoda Musté (1962), del listado de marineros de El Masnou y del INSEE proceden de esas fuentes, citadas en el artículo.
+- La figura 1 del artículo es el diagrama original de los autores; `05_figuras.R` dibuja una versión equivalente para mantener la misma tipografía que el resto de las figuras.
+
 ## Decisiones de procesamiento
 
 - **Duraciones en horas.** En 294 noticias la duración del viaje está en horas («De Palma en 18 horas», que el OCR suele leer «boras»). En 17 la extracción la registró como días. `01_construccion_registros.R` las corrige solo cuando los días registrados coinciden con las horas del texto y conserva la fecha original en `fecha_salida_original` (listado en `anexo_correccion_duraciones_en_horas.csv`).
