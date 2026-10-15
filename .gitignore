@@ -1,0 +1,11 @@
+# Salidas regenerables con run_all.R
+outputs/
+data/procesado/
+
+# Material local no necesario para la reproducción
+R/referencia/
+data/raw/llm_extraccion_nombre_log.jsonl
+
+.Rhistory
+.RData
+.Rproj.user/

@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "Si usa este material, cite el artículo y este repositorio."
+title: "Capitanes y patrones en las entradas de buques en Barcelona (1852-1853): datos y código"
+type: software
+authors:
+  - family-names: Ibarz
+    given-names: Jordi
+    affiliation: Universitat de Barcelona
+    orcid: "https://orcid.org/0000-0002-5606-712X"
+  - family-names: Nieto
+    given-names: Agustín
+    affiliation: Universidad Nacional de Mar del Plata - CONICET
+    orcid: "https://orcid.org/0000-0003-4467-873X"
+repository-code: "https://github.com/portada-git/nombres-portada-bar-1852-1853"
+license: MIT
+date-released: "2026-10-15"
+preferred-citation:
+  type: article
+  title: "¿Quién está al mando? Datos de capitanes y patrones en las noticias de entradas de buques en la Barcelona de la segunda mitad del siglo XIX. Notas metodológicas"
+  authors:
+    - family-names: Ibarz
+      given-names: Jordi
+    - family-names: Nieto
+      given-names: Agustín
+  journal: "Historia Regional"
+  status: in-press
