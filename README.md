@@ -55,6 +55,7 @@ En `outputs/tablas/`, los archivos `tablaNN_*` corresponden a las tablas del art
 
 - **Todo lo que se calcula sobre los datos** (normalización, evaluación, agrupamiento, tablas, figuras y cifras) se regenera de forma determinista.
 - **Las consultas al modelo de lenguaje no se repiten**: sus salidas están guardadas en `data/raw/`. Los scripts de `R/llm/` permiten repetirlas con una clave de OpenAI (`OPENAI_API_KEY`), aunque el modelo puede dar resultados levemente distintos.
+- **Disponibilidad del modelo.** Las consultas se hicieron en agosto de 2025 con `gpt-4o-mini` (snapshot `gpt-4o-mini-2024-07-18`). OpenAI anunció su retirada el 14 de octubre de 2026 y el modelo deja de estar disponible en la API el **14 de enero de 2027** ([página de deprecaciones](https://developers.openai.com/api/docs/deprecations); reemplazo recomendado: `gpt-6-luna`). Desde esa fecha, repetir las consultas exige cambiar el modelo en `R/llm/` y los resultados pueden diferir de los publicados. La reproducción del artículo no se ve afectada, porque parte de las salidas guardadas en `data/raw/`.
 
 ## Fuentes de los datos
 
